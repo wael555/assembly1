@@ -1,0 +1,102 @@
+.586
+.MODEL FLAT
+INCLUDE io.h
+.STACK 4096
+.DATA
+g1 DWORD ?
+w1 DWORD ?
+g2 DWORD ?
+w2 DWORD ?
+g3 DWORD ?
+w3 DWORD ?
+g4 DWORD ?
+w4 DWORD ?
+m1 BYTE "enter grade 1",0
+l1 BYTE "enter weight 1",0
+
+
+m2 BYTE "enter grade 2",0
+l2 BYTE "enter weight 2",0
+
+
+m3 BYTE "enter grade 3",0
+l3 BYTE "enter weight 3",0
+
+m4 BYTE "enter grade 4",0
+l4 BYTE "enter weight 4",0
+
+x BYTE 40 DUP (?)
+v BYTE "weight sum =",0
+d BYTE "sum of weight =",0
+z BYTE " the weightes avreage =",0
+b1 BYTE 11 DUP (?)
+b2 BYTE 11 DUP (?)
+b3 BYTE 11 DUP (?)
+.CODE
+MainProc PROC
+
+input m1,x,40
+atod x
+mov g1,eax
+
+input l1,x,40
+atod x
+mov w1,eax
+
+input m2,x,40
+atod x
+mov g2,eax
+
+
+input l2,x,40
+atod x
+mov w2,eax
+
+input m3,x,40
+atod x
+mov g3,eax
+
+
+input l3,x,40
+atod x
+mov w3,eax
+
+input m4,x,40
+atod x
+mov g4,eax
+
+
+input l4,x,40
+atod x
+mov w4,eax
+mul g4
+mov g4,eax
+mov eax,w3
+mul g3
+add g4,eax
+mov eax,w2
+mul g2
+add g4,eax
+mov eax,w1
+mul g1
+add g4,eax
+mov eax,g4
+dtoa b1,g4
+output v,b1
+mov eax,w1
+add eax,w2
+add eax,w3
+add eax,w4
+dtoa b1,eax
+output d,b1 
+mov g1,eax
+mov eax,g4
+div g1
+dtoa b2,eax
+dtoa b3,edx
+output z,b2
+
+mov eax,0
+ret
+MainProc ENDP
+END
