@@ -1,0 +1,35 @@
+.586
+.MODEL FLAT
+INClUDE io.h
+.STACK 4096
+.DATA
+	p1 BYTE "enter the lengh ",0	
+		p3 BYTE "enter width ",0
+			x DWORD ?
+					y DWORD ?
+					z DWORD ?
+				re BYTE "the perameter ia ..... ",0
+				result BYTE 11 DUP(?)
+				.CODE
+				MainProc PROC
+
+					input p1,x,4
+						atod x
+				mov x,eax
+
+			  input p3,z,4
+				atod z
+				add eax,x
+			mov y,eax
+			mov eax,2
+
+			mul y
+
+
+					dtoa result ,eax
+				output re,result			
+					mov eax ,0
+				ret
+				MainProc ENDP
+				END
+
