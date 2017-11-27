@@ -1,0 +1,112 @@
+.586
+.MODEL FLAT
+INCLUDE io.h
+.STACK 4096
+.DATA
+n1 DWORD ?
+n2 DWORD ?
+n3 DWORD ?
+n4 DWORD ?
+n5 DWORD ?
+n6 DWORD ?
+q DWORD ?
+n7 DWORD ?
+var1 BYTE 5
+var2 BYTE 10
+var3 BYTE 25
+var4 BYTE 50
+var5 BYTE 100
+
+
+
+
+
+       pe BYTE "how number of pennis  coin you have",0
+       ni BYTE "how number of nickls coin you have",0
+       k BYTE "how number of dimes  coin you have",0
+       qu BYTE "how number of quarter coin you have",0
+	   fi BYTE "how number of fifty-cent coin you have",0
+	   doll BYTE "how number of dollars coin you have",0
+	   res BYTE 40 DUP(?)
+	   M BYTE "the value of coin is by dollars ",0
+	   z BYTE "number of coins =..",0
+	   N BYTE 11 DUP (?)
+	     re BYTE 11 DUP (?)
+	   v BYTE 11 DUP (?)
+     
+
+.CODE
+MainProc PROC
+
+input pe,res,40
+atod res
+mov n1,eax
+
+
+input ni,res,40
+atod res
+mov n2,eax
+
+
+
+input k,res,40
+atod res
+mov n3,eax
+
+
+input qu,res,40
+atod res
+mov n4,eax
+
+
+input fi,res,40
+atod res
+mov n5,eax
+
+
+input doll,res,40
+atod res
+mov q,eax
+mul var5
+mov n6,eax
+
+mov eax,n5
+mul var4
+add n6,eax
+
+mov eax,n4
+mul var3
+add n6,eax
+
+mov eax,n3
+mul var2
+add n6,eax
+
+
+
+mov eax,n2
+mul var1
+add eax,n6
+
+mov bx,100
+ cwd
+idiv bx
+
+dtoa n,eax
+dtoa re,edx
+output M,N
+mov eax,n1
+add eax,n2
+add eax,n3
+add eax,n4
+add eax,n5
+add eax,q
+
+dtoa v,eax
+output z,v
+
+
+mov eax,0
+ret
+MainProc ENDP
+END
