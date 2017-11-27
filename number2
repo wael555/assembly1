@@ -1,0 +1,42 @@
+.586
+.MODEL FLAT
+INCLUDE io.h
+.STACK 4096
+.DATA
+n1 BYTE "enter the number 1",0
+n2 BYTE "enter the number2",0
+n3 BYTE "enter the  number3",0
+k BYTE 40 DUP (?)
+n4 BYTE " the soluation is ....",0
+m BYTE 11 DUP (?)
+
+var1 DWORD ?
+var2 DWORD ?
+var3 DWORD ?
+x DWORD 2
+
+.CODE
+MainProc PROC
+
+input n1,k,40
+atod k
+mov var1,eax
+
+
+input n2,k,40
+atod k
+add eax,var1
+mul x
+mov var2,eax
+
+input n3,k,40
+atod k
+add eax,var2
+dtoa m,eax
+output n4,m
+
+
+mov eax,0
+ret
+MainProc ENDP
+END
