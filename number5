@@ -1,0 +1,56 @@
+.586
+.MODEL FLAT
+INCLUDE io.h
+.STACK  4096
+.DATA
+num1 DWORD ?
+num2 DWORD ?
+num3 DWORD ?
+num4 DWORD ?
+x BYTE "ENTER GRADE 1 " , 0
+v BYTE "ENTER GRADE 2 " , 0
+z BYTE "ENTER GRADE 3 " , 0
+t BYTE "ENTER GRADE 4 " , 0
+f BYTE 40 DUP (?)
+res BYTE "the avrage of numbers  " , 0
+res1 BYTE 11 DUP (?) ,0
+
+
+
+.CODE
+
+MainProc PROC
+
+
+input x,f,40
+atod f
+mov num1,eax
+
+input v,f,40
+atod f
+mov num2,eax
+
+input z,f,40
+atod f
+mov num3,eax
+
+input t,f,40
+atod f
+mov num4,eax
+
+add eax,num1
+add eax,num2
+add eax ,num3
+mov bx,4
+ cwd
+idiv bx
+
+dtoa res1,eax
+output res,res1
+
+
+
+mov eax,0
+ret
+MainProc ENDP
+END
